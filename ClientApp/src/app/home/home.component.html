@@ -1,0 +1,38 @@
+<div class="home">
+  <div class="home_search_container col text-center">
+    <div class="home_search_input_container">
+      <div class="home_title">Search For Your Stuffs</div>
+      <div class="home_form_container">
+        <form action="#" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
+          <div class="d-flex flex-row align-items-center justify-content-start">
+            <input type="search" class="home_search_input" placeholder="Keyword Search" required="required">
+            <select class="dropdown_item_select home_search_input">
+              <option>Category</option>
+              <option>Category</option>
+              <option>Category</option>
+            </select>
+          </div>
+          <button type="submit" class="home_search_button">search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+  <div class="home_result_container col text-center">
+    <form>
+      <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="results">
+        <thead>
+          <tr>
+            <th>Search Results</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of results">
+            <td>{{ result.command }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+    </div>
+</div>

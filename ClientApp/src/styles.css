@@ -1,0 +1,119 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.home_search_container {
+  background: #F5F5F5;
+  position: relative;
+  height: 100%;
+}
+
+.home_form_container {
+  width: 832px;
+  margin: 0 auto;
+  margin-top: 35px;
+}
+
+.home_search_input_container {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 30%;
+}
+
+.home {
+  height: 90%;
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.home_title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #384158;
+}
+
+.home_search_button {
+  width: 120px;
+  height: 46px;
+  background: #14bdee;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.home_search_form div {
+  width: calc(100% - 140px);
+  height: 46px;
+  background: #FFFFFF;
+  border-radius: 3px;
+}
+
+.home_search_input {
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 25px;
+  padding-left: 20px;
+}
+
+  .home_search_input:not(:last-child) {
+    border-right: solid 1px #e5e5e5;
+  }
+
+  .home_search_input::-webkit-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #b5b8be !important;
+  }
+
+  .home_search_input:-moz-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #b5b8be !important;
+  }
+
+  .home_search_input::-moz-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #b5b8be !important;
+  }
+
+  .home_search_input:-ms-input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #b5b8be !important;
+  }
+
+  .home_search_input::input-placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #b5b8be !important;
+  }

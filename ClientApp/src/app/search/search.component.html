@@ -1,0 +1,17 @@
+<h1 id="tableLabel">Search Results</h1>
+
+<p></p>
+<p *ngIf="!results"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="results">
+  <thead>
+    <tr>
+      <th>Search Results</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of results">
+      <td>{{ result.command }}</td>
+    </tr>
+  </tbody>
+</table>
