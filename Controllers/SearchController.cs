@@ -25,12 +25,14 @@ namespace ProgrammingStuffs.Controllers
             _config = config;
         }
         [HttpGet]
+        [OutputCache(Duration = int.MaxValue)]
         [Route("GetCategories")]
         public IEnumerable<string> GetCategories()
         {
             return _config.GetSection("Categories").Get<string[]>();
         }
         [HttpGet]
+        [OutputCache(Duration = 86400, VaryByParam = "category")]
         public async Task<IEnumerable<Commands>> GetAsync(string category, string searchText)
         {
             using (var client = new HttpClient())

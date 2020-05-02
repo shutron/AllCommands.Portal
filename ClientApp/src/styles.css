@@ -3,6 +3,7 @@
 /* Provide sufficient contrast against white background */
 
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 a {
   color: #0366d6;
 }
@@ -24,7 +25,7 @@ code {
 }
 
 .home_form_container {
-  width: 832px;
+  width: 60%;
   margin: 0 auto;
   margin-top: 35px;
 }
@@ -41,8 +42,19 @@ code {
   margin-bottom: 30px;
 }
 
+.disclaimer {
+  /*position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;*/
+  margin-top: 20px;
+  background-color: #F5F5F5 !important;
+  font-family: 'Roboto Slab', serif;
+  color: #384158;
+}
+
 .home {
-  height: 90%;
+  height: calc(100% - 57px);
   position: absolute;
   width: 100%;
   left: 0;
@@ -65,7 +77,7 @@ code {
 }
 
 .home_search_button {
-  width: 120px;
+  width: 100%;
   height: 46px;
   background: #14bdee;
   border: none;
@@ -80,8 +92,6 @@ code {
 }
 
 .home_search_form div {
-  width: calc(100% - 140px);
-  height: 46px;
   background: #FFFFFF;
   border-radius: 3px;
 }

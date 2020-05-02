@@ -17,6 +17,8 @@ export class HomeComponent {
   search() {
     this.http.get<SearchResult[]>(this.baseUrl + 'Search?category=' + this.category + "&searchText=" + this.searchText).subscribe(result => {
       this.results = result;
+      setTimeout(() =>
+        document.getElementById("resultContainer").scrollIntoView());
     }, error => console.error(error));
   }
 }
