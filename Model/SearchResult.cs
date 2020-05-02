@@ -1,0 +1,30 @@
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+
+namespace ProgrammingStuffs
+{
+    public class Commands
+    {
+        [JsonProperty("command")]
+        public string Command { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("example")]
+        public string Example { get; set; }
+    }
+    public class CommandFile
+    {
+        [JsonProperty("category")]
+        public string Category { get; set; }
+        [JsonProperty("release")]
+        public Release Release { get; set; }
+    }
+    public class Release
+    {
+        [JsonProperty("version")]
+        public string Version { get; set; }
+        [JsonProperty("commands")]
+        public IEnumerable<Commands> Commands { get; set; }
+    }
+}

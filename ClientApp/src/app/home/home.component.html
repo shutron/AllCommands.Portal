@@ -3,24 +3,25 @@
     <div class="home_search_input_container">
       <div class="home_title">Search For Your Stuffs</div>
       <div class="home_form_container">
-        <form action="#" id="home_search_form_1" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
+        <div class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
           <div class="d-flex flex-row align-items-center justify-content-start">
-            <input type="search" class="home_search_input" placeholder="Keyword Search" required="required">
-            <select class="dropdown_item_select home_search_input">
-              <option>Category</option>
-              <option>Category</option>
-              <option>Category</option>
+            <input type="search" class="home_search_input" placeholder="Keyword Search" required="required" [(ngModel)]="searchText">
+            <select class="dropdown_item_select home_search_input" [(ngModel)]="category">
+              <option value="" disabled selected>Select category</option>
+              <option *ngFor="let c of categories" [value]="c">{{c}}</option>
             </select>
           </div>
-          <button type="submit" class="home_search_button">search</button>
-        </form>
+          <button type="submit" class="home_search_button" (click)="search()">search</button>
+        </div>
       </div>
     </div>
   </div>
   <div class="container">
-  <div class="home_result_container col text-center">
-    <form>
-      <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="results">
+    <div class="home_result_container">
+      <div class="no_results" *ngIf="results && results.length == 0">
+        No Results Found
+      </div>
+      <table class='table' aria-labelledby="tableLabel" *ngIf="results && results.length >0">
         <thead>
           <tr>
             <th>Search Results</th>
@@ -28,11 +29,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let result of results">
-            <td>{{ result.command }}</td>
+            <td>
+              {{ result.command }}<a class="btn"><i class="fas fa-copy"></i></a><br>
+            <textarea class="form-control" disabled value="result.example"></textarea>
+            </td>
           </tr>
         </tbody>
       </table>
-    </form>
-  </div>
     </div>
+  </div>
 </div>

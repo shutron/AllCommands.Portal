@@ -7,15 +7,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchComponent {
   public results: SearchResult[];
+  public searchText: string;
+  public category: string;
+  constructor(public http: HttpClient, @Inject('BASE_URL') public baseUrl: string) {
+  }
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<SearchResult[]>(baseUrl + 'weatherforecast').subscribe(result => {
+  search() {
+    this.http.get<SearchResult[]>(this.baseUrl + 'Search?category=' + this.category + "&searchText=" + this.searchText).subscribe(result => {
       this.results = result;
     }, error => console.error(error));
   }
 }
-
 interface SearchResult {
   command: string;
   example: string;
 }
+

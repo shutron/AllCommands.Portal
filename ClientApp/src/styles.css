@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
+
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 a {
   color: #0366d6;
 }
@@ -34,6 +36,11 @@ code {
   top: 30%;
 }
 
+.home_result_container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 .home {
   height: 90%;
   position: absolute;
@@ -44,6 +51,14 @@ code {
 .home_title {
   font-family: 'Roboto Slab', serif;
   font-size: 60px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #384158;
+}
+
+.no_results {
+  font-family: 'Roboto Slab', serif;
+  font-size: 36px;
   font-weight: 700;
   line-height: 1.2;
   color: #384158;
