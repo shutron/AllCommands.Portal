@@ -14,8 +14,8 @@ export class HomeComponent {
       this.categories = result;
     });
   }
-  search() {
-    this.http.get<SearchResult[]>(this.baseUrl + 'Search?category=' + this.category + "&searchText=" + this.searchText).subscribe(result => {
+  onChange(value) {
+    this.http.get<SearchResult[]>(this.baseUrl + 'Search?category=' + value + "&searchText=" + this.searchText).subscribe(result => {
       this.results = result;
       setTimeout(() =>
         document.getElementById("resultContainer").scrollIntoView());

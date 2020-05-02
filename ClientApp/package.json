@@ -1,11 +1,11 @@
 {
-  "name": "programmingstuffs",
+  "name": "AllCommands",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:ssr": "ng run ProgrammingStuffs:server:dev",
+    "build:ssr": "ng run AllCommands:server:dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -27,6 +27,8 @@
     "core-js": "^3.3.3",
     "@fortawesome/fontawesome-free": "5.13.0",
     "jquery": "3.4.1",
+    "ng2-search-filter": "0.5.1",
+    "ngx-clipboard": "12.3.1",
     "oidc-client": "^1.9.1",
     "popper.js": "^1.16.0",
     "rxjs": "^6.5.3",

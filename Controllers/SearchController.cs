@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace ProgrammingStuffs.Controllers
+namespace AllCommands.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -39,7 +39,7 @@ namespace ProgrammingStuffs.Controllers
             {
                 if (!string.IsNullOrEmpty(category))
                 {
-                    client.DefaultRequestHeaders.Add("User-Agent", "ProgrammingStuffs");
+                    client.DefaultRequestHeaders.Add("User-Agent", "AllCommands");
                     var response = await client.GetAsync($"https://api.github.com/repos/shutron/CommandLine/contents/{category}.json");
                     var content = await response.Content.ReadAsStringAsync();
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)

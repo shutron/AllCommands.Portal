@@ -1,25 +1,26 @@
 <div class="home">
   <div class="home_search_container col text-center">
     <div class="home_search_input_container">
-      <div class="home_title">Search For Your Stuffs</div>
+      <div class="home_title">Search For Your Commands</div>
       <div class="home_form_container">
         <div class="home_search_form">
           <div class="row col-sm-12" style="padding:0;margin:0;">
-            <div class="col-sm-5 d-flex flex-row align-items-center" style="padding:0;border-right:1px solid #F5F5F5">
-              <input type="search" class="home_search_input" placeholder="Keyword Search" required="required" [(ngModel)]="searchText">
-            </div>
-            <div class="col-sm-5 d-flex flex-row align-items-center" style="padding:0;">
-              <select class="dropdown_item_select home_search_input" [(ngModel)]="category">
-                <option value="" disabled selected>Select category</option>
+            <div class="col-sm-4 d-flex flex-row align-items-center" style="padding:0;border-right:1px solid #F5F5F5">
+              <select class="dropdown_item_select home_search_input" [(ngModel)]="category" (change)="onChange($event.target.value)">
+                <option value="" disabled selected>Select language</option>
                 <option *ngFor="let c of categories" [value]="c">{{c}}</option>
               </select>
             </div>
-            <div class="col-sm-2" style="padding:0;">
-              <button type="submit" class="home_search_button" (click)="search()">search</button>
+            <div class="col-sm-8 d-flex flex-row align-items-center" style="padding:0;">
+              <input type="search" class="home_search_input" placeholder="Keyword Search" required="required" [(ngModel)]="searchText">
             </div>
+            <!--<div class="col-sm-2" style="padding:0;">
+              <button type="submit" class="home_search_button" (click)="search()">search</button>
+            </div>-->
           </div>
 
-          <div class="disclaimer">This is an open source <img width="20" src="assets/GitHub-Mark-32px.png"/> GitHub project. To contribute or find out more, please follow <a href="https://github.com/shutron/CommandLine">here</a>.</div>
+          <div class="disclaimer">This is an open source <img width="20" src="assets/GitHub-Mark-32px.png" /> GitHub project and is maintained by great people like you! <br>
+          To contribute or find out more, please follow <a href="https://github.com/shutron/CommandLine">here</a>.</div>
         </div>
       </div>
     </div>
@@ -37,9 +38,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let result of results">
+          <tr *ngFor="let result of results | filter:searchText">
             <td>
-              <span style="font-family: 'Roboto Slab', serif;">{{ result.command }}</span><a class="btn"><i class="fas fa-copy"></i></a><br>
+              <span style="font-family: 'Roboto Slab', serif;">{{ result.command }}</span><a class="btn" style="padding-top:0;" ngxClipboard [cbContent]="result.command"><i class="far fa-copy"></i></a><br>
               <div style="margin-bottom:10px;">{{result.description}}</div>
               <div *ngIf="result.usage" style="margin-bottom:10px;">Usage:</div>
               <textarea *ngIf="result.usage" class="form-control" disabled>{{result.usage}}</textarea>

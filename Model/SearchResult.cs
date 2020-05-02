@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace ProgrammingStuffs
+namespace AllCommands
 {
     public class Commands
     {
