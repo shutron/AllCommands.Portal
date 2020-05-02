@@ -10,8 +10,8 @@ namespace ProgrammingStuffs
         public string Command { get; set; }
         [JsonProperty("description")]
         public string Description { get; set; }
-        [JsonProperty("example")]
-        public string Example { get; set; }
+        [JsonProperty("usage")]
+        public string Usage { get; set; }
     }
     public class CommandFile
     {

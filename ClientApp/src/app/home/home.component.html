@@ -30,8 +30,8 @@
         <tbody>
           <tr *ngFor="let result of results">
             <td>
-              {{ result.command }}<a class="btn"><i class="fas fa-copy"></i></a><br>
-            <textarea class="form-control" disabled value="result.example"></textarea>
+              <span style="font-family: 'Roboto Slab', serif;">{{ result.command }}</span><a class="btn"><i class="fas fa-copy"></i></a><br>
+            <textarea class="form-control" disabled>{{result.usage}}</textarea>
             </td>
           </tr>
         </tbody>
