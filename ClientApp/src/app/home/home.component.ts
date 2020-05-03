@@ -20,12 +20,10 @@ export class HomeComponent {
 
     this.isLoading = true;
 
-    this.http.get<SearchResult[]>(this.baseUrl + 'Search?category=' + value + "&searchText=" + this.searchText).subscribe(result => {
+    this.http.get<SearchResult[]>(this.baseUrl + 'Search?category=' + value).subscribe(result => {
       this.results = result;
       this.isLoading = false;
 
-      setTimeout(() =>
-        document.getElementById("resultContainer").scrollIntoView());
     }, error => {
       console.error(error);
       this.isLoading = false;

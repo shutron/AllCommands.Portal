@@ -1,34 +1,25 @@
 <div class="home">
-  <div class="home_search_container col text-center">
-    <div class="home_search_input_container">
-      <div class="home_title">Search For Your Commands</div>
-      <div class="home_form_container">
-        <div class="home_search_form">
-          <div class="row col-sm-12" style="padding:0;margin:0;">
-            <div class="col-sm-4 d-flex flex-row align-items-center" style="padding:0;border-right:1px solid #F5F5F5">
-              <select class="dropdown_item_select home_search_input" [(ngModel)]="category" (change)="onChange($event.target.value)">
-                <option value="" disabled selected>Select language</option>
-                <option *ngFor="let c of categories" [value]="c">{{c}}</option>
-              </select>
-            </div>
-            <div class="col-sm-8 d-flex flex-row align-items-center" style="padding:0;">
-              <input type="search" class="home_search_input" placeholder="Keyword Search" required="required" [(ngModel)]="searchText">
-            </div>
-            <!--<div class="col-sm-2" style="padding:0;">
-            <button type="submit" class="home_search_button" (click)="search()">search</button>
-          </div>-->
-          </div>
+  <div class="home_search_input_container">
+    <div class="home_search_form">
+      <div class="row col-sm-12" style="padding:0;margin:0;height:100%;">
+        <div class="col-sm-3 d-flex flex-row align-items-center" style="padding:0;border-right:1px solid #F5F5F5">
+          <select class="dropdown_item_select home_search_input" [(ngModel)]="category" (change)="onChange($event.target.value)">
+            <option value="" disabled selected>Select language</option>
+            <option *ngFor="let c of categories" [value]="c">{{c}}</option>
+          </select>
         </div>
-      </div>
-      <div class="disclaimer">
-        This is an open source <img width="20" src="StaticFiles/GitHub-Mark-32px.png" /> GitHub project and is managed by great people like you! <br>
-        To contribute or find out more, please follow <a href="https://github.com/shutron/CommandLine">here</a>.
+        <div class="col-sm-9 d-flex flex-row align-items-center" style="padding:0;">
+          <input type="search" class="home_search_input" placeholder="Keyword Search" required="required" [(ngModel)]="searchText">
+        </div>
+        <!--<div class="col-sm-2" style="padding:0;">
+          <button type="submit" class="home_search_button" (click)="search()">search</button>
+        </div>-->
       </div>
     </div>
     <br>
     <br>
   </div>
-  <div class="container">
+  <div class="container" style="padding-top: 57px;">
 
     <div *ngIf="isLoading" style="text-align: center;margin-top: 5%;">
       <div class="spinner-border text-secondary" role="status">
@@ -60,4 +51,9 @@
       </table>
     </div>
   </div>
+</div>
+
+<div class="disclaimer">
+  This is an open source <img width="20" src="StaticFiles/GitHub-Mark-32px.png" /> GitHub project and is managed by great people like you!
+  To contribute or find out more, please follow <a href="https://github.com/shutron/CommandLine">here</a>.
 </div>
