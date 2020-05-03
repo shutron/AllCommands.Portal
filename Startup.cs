@@ -47,7 +47,6 @@ namespace AllCommands
             }
 
             app.UseOutputCaching();
-            app.UseHttpsRedirection();
             app.UseSpaStaticFiles();    //wwwroot
             app.UseStaticFiles(new StaticFileOptions
             {
