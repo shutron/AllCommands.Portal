@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -19,22 +19,9 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
-    <Compile Remove="ClientApp\src\css\bootstrap\**" />
-    <Compile Remove="ClientApp\src\js\bootstrap\**" />
     <Content Remove="$(SpaRoot)**" />
-    <Content Remove="ClientApp\src\css\bootstrap\**" />
-    <Content Remove="ClientApp\src\js\bootstrap\**" />
-    <EmbeddedResource Remove="ClientApp\src\css\bootstrap\**" />
-    <EmbeddedResource Remove="ClientApp\src\js\bootstrap\**" />
     <None Remove="$(SpaRoot)**" />
-    <None Remove="ClientApp\src\css\bootstrap\**" />
-    <None Remove="ClientApp\src\js\bootstrap\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\css\" />
-    <Folder Include="ClientApp\src\js\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

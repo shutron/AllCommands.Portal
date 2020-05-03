@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace AllCommands
 {
@@ -46,7 +48,18 @@ namespace AllCommands
 
             app.UseOutputCaching();
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseSpaStaticFiles();    //wwwroot
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "ClientApp/src/assets")),
+                RequestPath = "/StaticFiles",
+                OnPrepareResponse = context =>
+                {
+                    context.Context.Response.Headers.Add("Cache-Control", "max-age=31536000");
+                    context.Context.Response.Headers.Add("Expires", "31536000");
+                }
+            });
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
