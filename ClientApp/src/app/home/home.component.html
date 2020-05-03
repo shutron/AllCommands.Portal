@@ -36,7 +36,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let result of results | filter:searchText">
+        <tr *ngFor="let result of results | filter:searchText; let i = index;">
           <td>
             <span style="font-family: 'Roboto Slab', serif;">{{ result.command }}</span><a class="btn" style="padding-top:0;" ngxClipboard [cbContent]="result.command"><i class="far fa-copy"></i></a><br>
             <div style="margin-bottom:10px;">{{result.description}}</div>

@@ -52,7 +52,6 @@ code {
 }
 
 .home {
-  height: calc(100% - 57px);
   position: absolute;
   width: 100%;
   left: 0;
