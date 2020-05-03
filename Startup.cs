@@ -52,7 +52,7 @@ namespace AllCommands
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-            Path.Combine(Directory.GetCurrentDirectory(), "ClientApp/src/assets")),
+            Path.Combine(Directory.GetCurrentDirectory(), "ClientApp/dist/assets")),
                 RequestPath = "/StaticFiles",
                 OnPrepareResponse = context =>
                 {
