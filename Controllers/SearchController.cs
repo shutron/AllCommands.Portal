@@ -40,7 +40,7 @@ namespace AllCommands.Controllers
                 if (!string.IsNullOrEmpty(category))
                 {
                     client.DefaultRequestHeaders.Add("User-Agent", "AllCommands");
-                    var response = await client.GetAsync($"https://api.github.com/repos/shutron/CommandLine/contents/{category}.json");
+                    var response = await client.GetAsync($"https://api.github.com/repos/shutron/AllCommands/contents/{category}.json");
                     var content = await response.Content.ReadAsStringAsync();
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
