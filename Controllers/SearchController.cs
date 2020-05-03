@@ -33,7 +33,7 @@ namespace AllCommands.Controllers
         }
         [HttpGet]
         [OutputCache(Duration = 86400, VaryByParam = "category")]
-        public async Task<IEnumerable<Commands>> GetAsync(string category, string searchText)
+        public async Task<IEnumerable<Commands>> GetAsync(string category)
         {
             using (var client = new HttpClient())
             {
@@ -50,7 +50,7 @@ namespace AllCommands.Controllers
                             byte[] data = Convert.FromBase64String(bodyJson.SelectToken("content").Value<string>());
                             string decodedString = Encoding.UTF8.GetString(data);
                             var obj = JsonConvert.DeserializeObject<CommandFile>(decodedString);
-                            var searchResults = obj?.Release?.Commands?.Where(x => string.IsNullOrEmpty(searchText) || x.Command.ToLower().Contains(searchText.ToLower()) || x.Description.ToLower().Contains(searchText.ToLower()));
+                            var searchResults = obj?.Release?.Commands;
                             return searchResults ?? new List<Commands>();
                         }
                     }

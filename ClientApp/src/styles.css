@@ -20,8 +20,7 @@ code {
 
 .home_search_container {
   background: #F5F5F5;
-  position: relative;
-  height: 100%;
+  position: relative;  
 }
 
 .home_form_container {
@@ -31,10 +30,10 @@ code {
 }
 
 .home_search_input_container {
-  position: absolute;
+  position: relative;
   width: 100%;
   left: 0;
-  top: 30%;
+  top: 5%;
 }
 
 .home_result_container {
