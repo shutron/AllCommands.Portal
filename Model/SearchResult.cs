@@ -1,5 +1,4 @@
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 
 namespace AllCommands
@@ -12,7 +11,22 @@ namespace AllCommands
         public string Description { get; set; }
         [JsonProperty("usage")]
         public string Usage { get; set; }
+
+        [JsonProperty("options")]
+        public IEnumerable<Option> Options { get; set; }
     }
+
+    public class Option
+    {
+        [JsonProperty(nameof(Value))]
+        public string Value { get; set; }
+        [JsonProperty(nameof(Usage))]
+        public string Usage { get; set; }
+
+        [JsonProperty(nameof(Desc))]
+        public string Desc { get; set; }
+    }
+
     public class CommandFile
     {
         [JsonProperty("category")]

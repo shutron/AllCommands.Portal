@@ -42,7 +42,22 @@
             <div style="margin-bottom:10px;">{{result.description}}</div>
             <div *ngIf="result.usage" style="margin-bottom:10px;">Usage:</div>
             <textarea *ngIf="result.usage" class="form-control" disabled>{{result.usage}}</textarea>
+            <div *ngIf="result.options">
+              <span>Options:</span>
+              <br />
+              <ul>
+                <li *ngFor="let option of result.options">
+                  {{ option.value }}
+                  <br />
+                  {{ option.usage }}
+                  <br />
+                  {{ option.desc }}
+                  <br />
+                </li>
+              </ul>
+            </div>
           </td>
+
         </tr>
       </tbody>
     </table>
