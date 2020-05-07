@@ -29,7 +29,8 @@ namespace AllCommands.Controllers
         [Route("GetCategories")]
         public IEnumerable<string> GetCategories()
         {
-            return _config.GetSection("Categories").Get<string[]>();
+            var categories = _config.GetSection("Categories").Get<string[]>();
+            return categories.OrderBy(x => x);
         }
         [HttpGet]
         [OutputCache(Duration = 86400, VaryByParam = "category")]
