@@ -17,7 +17,7 @@ namespace AllCommands.Portal.Services
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILogger<SearchService> _logger;
-        public SearchService(IHttpClientFactory httpClientFactory,ILogger<SearchService> logger)
+        public SearchService(IHttpClientFactory httpClientFactory, ILogger<SearchService> logger)
         {
             _httpClientFactory = httpClientFactory;
             _logger = logger;
@@ -31,7 +31,8 @@ namespace AllCommands.Portal.Services
         public async Task<List<Commands>> GetCommandsAsync(string category)
         {
             List<Commands> commands = null;
-            string requestUri = $"https://api.github.com/repos/shutron/AllCommands/contents/{category}.json";
+            
+            string requestUri = ConfigUtility.GetSection(AppSettingsSection.CategoryJsonPath).Get<string>().Replace("{category}", category);
 
             var client = _httpClientFactory.CreateClient();
             client.DefaultRequestHeaders.Add("User-Agent", "AllCommands");

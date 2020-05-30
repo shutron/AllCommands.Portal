@@ -5,6 +5,7 @@
         public class AppSettingsSection
         {
             public const string Categories = "Categories";
+            public const string CategoryJsonPath = "CategoryJsonPath";
         }
     }
 }
