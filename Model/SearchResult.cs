@@ -18,13 +18,13 @@ namespace AllCommands
 
     public class Option
     {
-        [JsonProperty(nameof(Value))]
+        [JsonProperty("value")]
         public string Value { get; set; }
-        [JsonProperty(nameof(Usage))]
+        [JsonProperty("usage")]
         public string Usage { get; set; }
 
-        [JsonProperty(nameof(Desc))]
-        public string Desc { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 
     public class CommandFile

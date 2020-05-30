@@ -33,5 +33,12 @@ export class HomeComponent {
 
 interface SearchResult {
   command: string;
-  example: string;
+  usage: string;
+  description: string;
+  options: Option[];
+}
+interface Option {
+  value: string;
+  usage: string;
+  description: string;
 }

@@ -40,21 +40,14 @@
           <td>
             <span style="font-family: 'Roboto Slab', serif;">{{ result.command }}</span><a class="btn" style="padding-top:0;" ngxClipboard [cbContent]="result.command"><i class="far fa-copy"></i></a><br>
             <div style="margin-bottom:10px;">{{result.description}}</div>
-            <div *ngIf="result.usage" style="margin-bottom:10px;">Usage:</div>
-            <textarea *ngIf="result.usage" class="form-control" disabled>{{result.usage}}</textarea>
+            <textarea *ngIf="result.usage" class="form-control"  style="width:95%;display:inline;" disabled>{{result.usage}}</textarea><a class="btn" style="padding-top:0;" ngxClipboard [cbContent]="result.usage"><i class="far fa-copy"></i></a>
             <div *ngIf="result.options">
               <span>Options:</span>
-              <br />
-              <ul>
-                <li *ngFor="let option of result.options">
-                  {{ option.value }}
-                  <br />
-                  {{ option.usage }}
-                  <br />
-                  {{ option.desc }}
-                  <br />
-                </li>
-              </ul>
+              <div *ngFor="let option of result.options" style="margin-left:10px;">
+                <div style="font-family: 'Roboto Slab', serif;">{{ option.value }} </div>
+                <div style="margin-bottom:10px;">{{ option.description }}</div>
+                <textarea class="form-control" style="width:95%;display:inline;" disabled>{{ option.usage }}</textarea><a class="btn" style="padding-top:0;" ngxClipboard [cbContent]="option.usage"><i class="far fa-copy"></i></a>
+              </div>
             </div>
           </td>
 
