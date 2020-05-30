@@ -12,16 +12,12 @@ namespace AllCommands.Controllers
     public class SearchController : BaseController
     {
         private readonly ILogger<SearchController> _logger;
-        private readonly IConfiguration _config;
 
         private readonly ISearchService _searchService;
 
-        public SearchController(ILogger<SearchController> logger
-            , IConfiguration config
-            , ISearchService searchService)
+        public SearchController(ILogger<SearchController> logger, ISearchService searchService)
         {
             _logger = logger;
-            _config = config;
             _searchService = searchService;
         }
 

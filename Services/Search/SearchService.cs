@@ -15,24 +15,26 @@ namespace AllCommands.Portal.Services
 {
     public class SearchService : ISearchService
     {
+        private readonly IConfiguration _config;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILogger<SearchService> _logger;
-        public SearchService(IHttpClientFactory httpClientFactory, ILogger<SearchService> logger)
+        public SearchService(IHttpClientFactory httpClientFactory, ILogger<SearchService> logger, IConfiguration config)
         {
             _httpClientFactory = httpClientFactory;
             _logger = logger;
+            _config = config;
         }
 
         public IEnumerable<string> GetCategories()
         {
-            return ConfigUtility.GetSection(AppSettingsSection.Categories).Get<string[]>().OrderBy(x => x);
+            return _config.GetSection(AppSettingsSection.Categories).Get<string[]>().OrderBy(x => x);
         }
 
         public async Task<List<Commands>> GetCommandsAsync(string category)
         {
             List<Commands> commands = null;
 
-            string requestUri = ConfigUtility.GetSection(AppSettingsSection.CategoryJsonPath).Get<string>().Replace("{category}", category);
+            string requestUri = _config.GetSection(AppSettingsSection.CategoryJsonPath).Get<string>().Replace("{category}", category);
 
             var client = _httpClientFactory.CreateClient();
             client.DefaultRequestHeaders.Add("User-Agent", "AllCommands");
