@@ -25,13 +25,13 @@ namespace AllCommands.Portal.Services
 
         public IEnumerable<string> GetCategories()
         {
-            return ConfigUtility.GetSection(AppSettingsSection.Categories).Get<string[]>();
+            return ConfigUtility.GetSection(AppSettingsSection.Categories).Get<string[]>().OrderBy(x => x);
         }
 
         public async Task<List<Commands>> GetCommandsAsync(string category)
         {
             List<Commands> commands = null;
-            
+
             string requestUri = ConfigUtility.GetSection(AppSettingsSection.CategoryJsonPath).Get<string>().Replace("{category}", category);
 
             var client = _httpClientFactory.CreateClient();
