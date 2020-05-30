@@ -1,67 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AllCommands.Portal.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AllCommands.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class SearchController : ControllerBase
+    public class SearchController : BaseController
     {
         private readonly ILogger<SearchController> _logger;
-        private IConfiguration _config;
 
-        public SearchController(ILogger<SearchController> logger, IConfiguration config)
+        private readonly ISearchService _searchService;
+
+        public SearchController(ILogger<SearchController> logger, ISearchService searchService)
         {
             _logger = logger;
-            _config = config;
+            _searchService = searchService;
         }
+
         [HttpGet]
         [OutputCache(Duration = int.MaxValue)]
         [Route("GetCategories")]
         public IEnumerable<string> GetCategories()
         {
-            var categories = _config.GetSection("Categories").Get<string[]>();
-            return categories.OrderBy(x => x);
+            return _searchService.GetCategories();
         }
+
         [HttpGet]
         [OutputCache(Duration = 86400, VaryByParam = "category")]
         public async Task<IEnumerable<Commands>> GetAsync(string category)
         {
-            using (var client = new HttpClient())
-            {
-                if (!string.IsNullOrEmpty(category))
-                {
-                    client.DefaultRequestHeaders.Add("User-Agent", "AllCommands");
-                    var response = await client.GetAsync($"https://api.github.com/repos/shutron/AllCommands/contents/{category}.json");
-                    var content = await response.Content.ReadAsStringAsync();
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        var bodyJson = JToken.Parse(content);
-                        if (bodyJson.SelectToken("content") != null)
-                        {
-                            byte[] data = Convert.FromBase64String(bodyJson.SelectToken("content").Value<string>());
-                            string decodedString = Encoding.UTF8.GetString(data);
-                            var obj = JsonConvert.DeserializeObject<CommandFile>(decodedString);
-                            var searchResults = obj?.Release?.Commands;
-                            return searchResults ?? new List<Commands>();
-                        }
-                    }
-                    else
-                    {
-                        _logger.LogError($"StatusCode: {response.StatusCode} \nContent: {content}  \nReasonPhrase: {response.ReasonPhrase}");
-                    }
-                }
-            }
-            return new List<Commands>();
+            return await _searchService.GetCommandsAsync(category);
         }
     }
 }

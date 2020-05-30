@@ -1,6 +1,6 @@
+using AllCommands.Portal.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +29,16 @@ namespace AllCommands
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddHttpClient();
+
+            RegisterDependencies(services);
+        }
+
+        private void RegisterDependencies(IServiceCollection services)
+        {
             services.AddSingleton(Configuration);
+
+            services.AddScoped<ISearchService, SearchService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +60,7 @@ namespace AllCommands
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-            Path.Combine(Directory.GetCurrentDirectory(), "ClientApp/dist/assets")),
+            Path.Combine(Directory.GetCurrentDirectory(), "dist/assets")),
                 RequestPath = "/StaticFiles",
                 OnPrepareResponse = context =>
                 {
