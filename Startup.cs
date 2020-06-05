@@ -54,13 +54,13 @@ namespace AllCommands
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 //app.UseHsts();
             }
-
+            app.UseHttpsRedirection();
             app.UseOutputCaching();
             app.UseSpaStaticFiles();    //wwwroot
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-            Path.Combine(Directory.GetCurrentDirectory(), "dist/assets")),
+            Path.Combine(Directory.GetCurrentDirectory(), "ClientApp/dist/assets")),
                 RequestPath = "/StaticFiles",
                 OnPrepareResponse = context =>
                 {
